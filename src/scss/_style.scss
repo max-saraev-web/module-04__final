@@ -1,138 +1,96 @@
-$mainColor: #3E5E93;
-
-body {
-  min-width: 420px;
-  padding-bottom: 50px;
-  font-family: Montserrat, sans-serif;
-}
-
 .header {
-  background-color: $mainColor;
-  color: #fff;
-  margin-bottom: 40px;
-  padding: 20px 0;
-  text-align: center;
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-}
+  background-color: $light-font;
+  color: $window-panel;
+  box-shadow: 0px 10px 63px rgba(0, 0, 0, 0.07);
 
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
+  &__container {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+  }
 
-.delete {
-  display: none;
+  &__logo {
+    margin-right: 50px;
+  }
 
-  &.is-visible {
-    width: 10px;
-    display: table-cell;
+  &__title {
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
   }
 }
 
-.del-icon {
-  display: block;
-  width: 10px;
-  height: 10px;
-  border: none;
-  background-color: transparent;
-  // background-image: url("../img/del.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+.main {
+  padding: 94px 0 144px 0;
+}
 
-  &:hover {
-    opacity: 0.7;
+.main__container {
+  display: flex;
+  gap: 50px;
+  padding: 0 75px;
+  flex-wrap: wrap;
+  background: $button-second;
+}
+
+.pomodoro-form {
+  width: 733px;
+  margin: 0 auto;
+}
+
+.window__panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 30px 19px 30px;
+  background-color: $window-panel;
+  border-radius: 30px 30px 0 0;
+  &-title::first-letter {
+    text-transform: uppercase;
   }
 }
 
-.btn-wrapper {
-  margin-bottom: 30px;
+.window__body {
+  background-color: $window-back-ground;
+  margin-bottom: 50px;
+  padding: 70px 166px 108px;
+  border-radius: 0 0 30px 30px;
 }
 
-.form {
-  padding: 30px 50px;
-  background-color: #fff;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
-  left: 50%;
-  position: absolute;
-  top: 0px;
-  opacity: 0;
-  transform: translateX(-50%);
-  transition-property: top, opacity;
-  transition-duration: 0.5s;
-  transition-timing-function: ease-in-out;
-  z-index: 2;
+.window__timer-text {
+  color: $dark-font;
+  font-size: 150px;
+  line-height: 183px;
+  margin-bottom: 36px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.form-title {
-  margin-top: 0;
-  padding-bottom: 20px;
+.window__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 23px;
 }
 
-.form-label {
-  width: 80px;
+.task-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.form-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  opacity: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: 0.3s ease-in-out;
-  visibility: hidden;
-  width: 100%;
-  z-index: 1;
-
-  &.is-visible {
-    opacity: 1;
-    visibility: visible;
-
-    .form {
-      opacity: 1;
-      top: 40px;
-    }
-  }
-
-}
-
-.close {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  display: block;
-  width: 20px;
-  height: 20px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  // background-image: url("../img/del.svg");
-
-  &:hover {
-    opacity: 0.7;
+.task-form__add-button {
+  width: 230px;
+  transition: all 0.5s;
+  &--disabled {
+    filter: grayscale(100%);
+    cursor: not-allowed;  
   }
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  background-color: $mainColor;
-  color: #fff;
-  text-align: center;
-}
 
-@media (max-width: 720px) {
-  .logo {
-    font-size: 20px;
-    display: grid;
-  }
+.pomodoro-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 507px;
+  margin: 0 auto;
 }
