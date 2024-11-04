@@ -13,7 +13,7 @@ module.exports = {
   devServer: {
     hot: true,
   },
-  entry: ['@babel/polyfill', './src/index.js'],
+  entry: ['@babel/polyfill', './src/main.js'],
   output: {
     filename: '[name][contenthash].js',
     path: path.resolve(__dirname, 'dist'),
