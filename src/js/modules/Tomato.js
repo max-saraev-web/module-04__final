@@ -1,4 +1,5 @@
-import { Task } from "./Task";
+import { RenderTomato } from "./RenderTomato";
+import { DefaultTask, Task } from "./Task";
 
 class Tomato {
   #taskDuration = 25;
@@ -6,11 +7,46 @@ class Tomato {
   #bigPause = 15;
   #tasks = [];
   #activeTask = null;
-  constructor({taskDuration, pause, bigPause}) {
-    
+  #messages = {
+    ru: {
+    noTask: 'Активной задачи не найдено!',
+    tomato: 'Томат',
+    noTask: 'Активной задачи не найденно. Пожалуйста активируйте задачу.',
+    timerStart: 'Старт',
+    timerStop: 'Стоп',
+    pause: 'Перерыв',
+    bigPause: 'Большой перерыв',
+  },
+  en: {
+    noTask: 'No active task found!',
+    tomato: 'Tomato',
+    noTask: 'No active task found. Please active a task.',
+    timerStart: 'Start',
+    timerStop: 'Stop',
+    pause: 'Pause',
+    bigPause: 'Big pause',
+  }
+  };
+  constructor({taskDuration, pause, bigPause}, app) {
+    if (Tomato.instance) return Tomato.instance;
+    this.renderTomato = new RenderTomato(document.querySelector(app));
     this.#taskDuration = taskDuration;
     this.#pause = pause;
     this.#bigPause = bigPause;
+    Tomato.instance = this;
+    this.init();
+  }
+  init() {
+    // this.renderTomato.form.count.textContent = '121';
+    console.log(this.renderTomato);
+    const currentStorage = this.getStorage();
+    console.log('currentStorage: ', currentStorage);
+    if (currentStorage.length <= 0) {
+      console.log('В данный момент, задач нет!')
+    } else {
+      this.collectTasks(currentStorage);
+      console.log(this.#tasks);
+    };
   }
   addTask(task) {
     this.#tasks.push(task);
@@ -61,6 +97,15 @@ class Tomato {
         break;
     }
     return {targetTime, minutes, modeName};
+  }
+  addStorageTask(arr, task) {
+    arr.push(task);
+  }
+  getStorage(key = 'tomatoTimer') {
+    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : [];
+  }
+  setStorage(obj, key = 'tomatoTimer') {
+    localStorage.setItem(key, JSON.stringify(obj));
   }
 }
 

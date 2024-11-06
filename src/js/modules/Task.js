@@ -1,6 +1,8 @@
 export class Task {
-  constructor(title, count = 0) {
-    this.title = title;
+  constructor(text, count = 0) {
+    const proto = Object.getPrototypeOf(this);
+    if (proto.constructor === Task) throw new Error('Класс задачи является АБСТРАКТНЫМ');
+    this.text = text;
     this.count = count;
     this.id = this.generateId();
     // this.id = Math.random().toString().substring(2, 10);
@@ -9,7 +11,7 @@ export class Task {
     ++this.count;
   }
   setTitle(newTitle) {
-    this.title = newTitle;
+    this.text = newTitle;
   }
   start(time) {
     let timerId;
@@ -59,5 +61,26 @@ export class Task {
       seconds: sec.padStart(2, 0),
       timeRemaning,
     }
+  }
+}
+
+export class DefaultTask extends Task {
+  constructor(text, count) {
+    super(text, count)
+    this.importance = 'default';
+  }
+}
+
+export class Important extends Task {
+  constructor(text, count) {
+    super(text, count)
+    this.importance = 'important';
+  }
+}
+
+export class Medium extends Task {
+  constructor(text, count) {
+    super(text, count)
+    this.importance = 'Medium';
   }
 }
