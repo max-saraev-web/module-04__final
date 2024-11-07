@@ -21,23 +21,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }, '.main__container');
 
   // * - убрать в controller
-  let count = 0;
-  const imp = ['default', 'important', 'medium'];
-  document.querySelector('.button-importance')
-    .addEventListener('click', ({target}) => {
-      count += 1;
-      if (count >= imp.length) {
-        count = 0;
-      }
+  // let count = 0;
+  // const imp = ['default', 'important', 'medium'];
+  // document.querySelector('.button-importance')
+  //   .addEventListener('click', ({target}) => {
+  //     count += 1;
+  //     if (count >= imp.length) {
+  //       count = 0;
+  //     }
 
-      for (let i = 0; i < imp.length; i++) {
-        if (count === i) {
-          target.classList.add(imp[i]);
-        } else {
-          target.classList.remove(imp[i]);
-        }
-      }
-    });
+  //     for (let i = 0; i < imp.length; i++) {
+  //       if (count === i) {
+  //         target.classList.add(imp[i]);
+  //       } else {
+  //         target.classList.remove(imp[i]);
+  //       }
+  //     }
+  //   });
+  // * - убрать в controller
   // const appDoc = document.querySelector('.main__container');
   // console.log('appDoc: ', appDoc);
   // const div = el('h2', '123213213213213', {

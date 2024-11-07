@@ -38,7 +38,7 @@ class Tomato {
   }
   init() {
     // this.renderTomato.form.count.textContent = '121';
-    console.log(this.renderTomato);
+    console.log('Класс рендера', this.renderTomato);
     const currentStorage = this.getStorage();
     console.log('currentStorage: ', currentStorage);
     if (currentStorage.length <= 0) {

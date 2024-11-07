@@ -81,6 +81,20 @@ export class Important extends Task {
 export class Medium extends Task {
   constructor(text, count) {
     super(text, count)
-    this.importance = 'Medium';
+    this.importance = 'medium';
   }
 }
+
+const mnt = new Medium('Сверстать сайт!');
+console.log('mnt: ', mnt);
+
+const tt = {
+  importance: 'medium'
+}
+  console.log('tt: ', tt);
+// {
+//     "text": "Сверстать сайт!",
+//     "count": 0,
+//     "id": "38569448",
+//     "importance": "medium"
+// }
