@@ -17,17 +17,121 @@
 	top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 175px;
   width: 350px;
   padding: 25px 83px;
   background: $light-font;
+}
+
+.modal-edit {
+  position: fixed;
+	display: flex;
+	flex-direction: column;
+  align-items: center;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  padding: 25px 83px;
+  background: $light-font;
+  &__submit-btn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 28px;
+  }
+  &__cancel-btn {
+    display: block;
+    margin: 0 auto;
+  }
+  &__title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 25px;
+    color: black;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  &__close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    height: 24px;
+    width: 24px;
+    background: url(../img/svg/close-btn.svg) no-repeat center;
+    border: 0;
+  }
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+  }
+  &__input-group:not(:last-child) {
+    margin-bottom: 18px;
+  }
+  &__title-input {
+    outline: none;
+    border: 2px solid $red-border;
+    border-radius: 8px;
+    color: $input-text;
+    font-size: 13px;
+    line-height: 21px;
+    padding: 8px;
+    font-weight: 400;
+    background-color: rgb(255, 241, 241);
+  }
+  &__subtitle {
+    font-weight: 700;
+    color: $font-black;
+    margin-bottom: 2px;
+    font-size: 13px;
+    line-height: 21px;
+  }
+  &__radio-elem {
+    color: black;
+    display: flex;
+    @media(min-width: 1024px) {
+      cursor: pointer;
+    }
+  }
+  &__radio-elem input {
+    display: none;
+  }
+  &__radio-elem:not(:last-child) {
+    margin-bottom: 6px;
+  }
+  &__radio-elem input:checked + .modal-edit__checkbox {
+    // border: 3px solid red;
+    filter: drop-shadow(0 0 4px $red-border)
+    drop-shadow(0 0 2px rgb(255, 255, 255));
+    background-color: $red-border;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: url('/src/img/svg/radio-сhecked.svg');
+    background-size: contain;
+  }
+  &__checkbox {
+    display: block;
+    // background: url('/src/img/svg/radio-default.svg') no-repeat center / 6px, rgb(15, 162, 232);
+    background-color: $red-border;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/src/img/svg/radio-default.svg');
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-right: 12px;
+    transition: all 0.5s;
+  }
 }
 
 .modal-delete__title{
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 17px;
+  line-height: 25px;
+  color: black;
+  margin-bottom: 28px;
+  text-align: center;
 }
 
 .modal-delete__close-button {

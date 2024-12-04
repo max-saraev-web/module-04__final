@@ -7,6 +7,9 @@ $task-border-color: #e4e4e4;
 $deadline-timer: #999999;
 $popup-border: #c4c4c4;
 $button-main: #ff2a23;
+$font-black :rgb(8, 27, 48);
+$red-border: rgb(255, 57, 50);
+$input-text: rgb(136, 24, 20);
 
 @function lighter($color, $tone) {
   $adjust: 16 * $tone;
