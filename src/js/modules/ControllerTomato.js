@@ -20,7 +20,6 @@ export class ControllerTomato {
     return this.tomato.activeTask;
   }
   handleAddTask(taskId) {
-    console.log(this.tomato);
     this.tomato.addTask(taskId);
   }
   handleActiveTask(taskId) {

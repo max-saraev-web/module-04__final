@@ -1,4 +1,3 @@
-import { RenderTomato } from "./RenderTomato";
 import { DefaultTask, Important, Medium, Task } from "./Task";
 
 class Tomato {
@@ -33,7 +32,6 @@ class Tomato {
   subscribers = {};
   constructor({taskDuration, pause, bigPause}) {
     if (Tomato.instance) return Tomato.instance;
-    // this.renderTomato = new RenderTomato(document.querySelector(app));
     this.#taskDuration = taskDuration;
     this.#pause = pause;
     this.#bigPause = bigPause;
@@ -111,7 +109,6 @@ class Tomato {
   startTask() {
     try {
       if (!this.#activeTask) throw new Error('Активной задачи не найденно!');
-      console.log(this.subscribers);
       this.#activeTask.start(this.settings, this.subscribers);
     } catch (error) {
       console.warn(error);

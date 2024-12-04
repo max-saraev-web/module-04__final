@@ -222,7 +222,6 @@ export class RenderTomato {
     }
     if (target.matches('.popup__edit-button')) {
       this.editId = target.parentElement.parentElement.dataset.id;
-      console.log('Хочу поменять задачу', this.editId);
       this.openEditModal();
       this.editTaskName(`Редактирование задачи: <br>${this.controller.handleGetTaskNameById(this.editId)}`);
     }
@@ -242,7 +241,6 @@ export class RenderTomato {
   }
   chooseImportance = ({target}) => {
     const imp = ['default', 'important', 'medium'];
-    console.log(this.impCount);
     this.impCount += 1;
         if (this.impCount >= imp.length) {
           this.impCount = 0;
@@ -259,20 +257,16 @@ export class RenderTomato {
   formValidity = ({target}) => {
       clearTimeout(this.inputDelay);
       this.inputDelay = setTimeout(() => {
-        console.log(target.value);
-        console.log(target.parentElement);
       },1500);
   }
   readyToSubmit(ev) {
     if (ev.key === 'Enter') {
       ev.preventDefault();
-      console.log("Введите валидные данные для создания новой задачи");
     }
   }
   formSubmit = (ev) => {
     ev.preventDefault();
     const target = ev.target;
-    console.log('target: ', target.elements);
     const impBtn = target.querySelector('.button-importance');
     const obj = Object.fromEntries(new FormData(target))['task-name'];
     const params = {

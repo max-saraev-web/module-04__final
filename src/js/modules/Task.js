@@ -19,7 +19,6 @@ export class Task {
 
   start(settings, subscribers) {
     const {time} = this.taskState(settings);
-    console.log('time: ', time);
     const timeMs = time * 60 * 1000;
 
     const end = this.resumeTime ?
@@ -42,7 +41,6 @@ export class Task {
         `${this.formatTime(minutesRemaning)}:${this.formatTime(secondsRemaning)}`
         ); 
 
-      console.log('счётчик', this.countVal);
       this.timerId = setTimeout(timerStarter, 1000);
       if (timeRemaning <= 0 && this.count === 6) {
         this.count = 1;
@@ -67,7 +65,6 @@ export class Task {
           this.resumeTime = null;
           this.notifySubscribers('counter',
             subscribers, this.count);
-          console.log(subscribers);
           this.notifySubscribers('saveCount', subscribers, this.count);
         }
 
@@ -91,9 +88,7 @@ export class Task {
   return fullId.join('');
   }
   getTimeRemamning(stopTime) {
-    // console.log('123', stopTime);
     const timeRemaning = stopTime - Date.now();
-    // console.log('timeRemaning: ', timeRemaning);
 
     const min = Math.floor(timeRemaning / 1000 / 60 % 60) + '';
     const sec = Math.floor(timeRemaning / 1000 % 60) + '';
