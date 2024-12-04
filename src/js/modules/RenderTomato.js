@@ -31,7 +31,7 @@ export class RenderTomato {
     this.controller.handleSubscribe('title', this.updatePanelTitle.bind(this));
     this.controller.handleSubscribe('stopBtn', this.toggleStopBtn.bind(this));
     this.controller.handleSubscribe('counter', this.updateActiveCountItem.bind(this));
-    this.controller.handleSubscribe('saveCount', this.saveActiveTaskCount());
+    this.controller.handleSubscribe('saveCount', this.saveActiveTaskCount.bind(this));
   }
   renderForm({taskTitle, mode, modeTime}) {
     const pomodoroForm = el('div', {
@@ -445,10 +445,10 @@ export class RenderTomato {
   editTaskName(title) {
     this.modalEdit.editText.innerHTML = title;
   }
-  updateActiveCountItem(id, count) {
+  updateActiveCountItem(count) {
     const docElem = [...this.tasks.tasksList.querySelectorAll('.tasks__item')];
     docElem.forEach(elem => {
-      if (elem.dataset.id === id) elem.querySelector('.count-number').textContent = count;
+      if (elem.querySelector('.tasks__text_active')) elem.querySelector('.count-number').textContent = count;
     });
   }
   generateNewTasksList(arr) {

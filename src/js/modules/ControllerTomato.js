@@ -51,6 +51,12 @@ export class ControllerTomato {
     return this.tomato.editTaskById(id, newParams);
   }
   handleSaveActiveTaskCount(count) {
-    this.tomato
+    const tasks = this.tomato.tasks;
+    tasks.forEach((elem) => {
+      if (elem.isActive === true) {
+        elem.count = count;
+      }
+    });
+    this.tomato.setStorage(tasks);
   }
 }

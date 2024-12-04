@@ -54,7 +54,7 @@ export class Task {
           );
         this.taskState(settings, subscribers);
         this.notifySubscribers('counter',
-            subscribers, this.id, this.count);
+            subscribers, this.count);
         this.notifySubscribers('saveCount', subscribers, this.count);
         } else if(timeRemaning <= 0) {
           this.increaseCounter();
@@ -66,7 +66,8 @@ export class Task {
           this.taskState(settings, subscribers);
           this.resumeTime = null;
           this.notifySubscribers('counter',
-            subscribers, this.id, this.count);
+            subscribers, this.count);
+          console.log(subscribers);
           this.notifySubscribers('saveCount', subscribers, this.count);
         }
 
