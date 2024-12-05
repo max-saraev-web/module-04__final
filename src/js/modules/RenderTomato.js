@@ -17,6 +17,7 @@ export class RenderTomato {
     this.deleteId = null;
     this.editId = null;
     this.params = params;
+    this.timerState = false;
   }
   renderInit() {
     this.updateRoot('');
@@ -32,6 +33,7 @@ export class RenderTomato {
     this.controller.handleSubscribe('stopBtn', this.toggleStopBtn.bind(this));
     this.controller.handleSubscribe('counter', this.updateActiveCountItem.bind(this));
     this.controller.handleSubscribe('saveCount', this.saveActiveTaskCount.bind(this));
+    this.controller.handleSubscribe('timerSwitch', this.switchTimerState.bind(this));
   }
   renderForm({taskTitle, mode, modeTime}) {
     const pomodoroForm = el('div', {
@@ -231,13 +233,20 @@ export class RenderTomato {
       this.modalTaskName(`Удалить задачу: <br>${this.controller.handleGetTaskNameById(this.deleteId)}?`);
     }
   };
-  startTimer(){
-    this.toggleStopBtn();
-    this.controller.handleTimer();
+  startTimer() {
+    if (this.timerState === false) {
+      this.timerState = true;
+      console.log('start', this.params);
+      this.toggleStopBtn();
+      this.controller.handleTimer();
+    }
   }
-  stopTimer = () => {
-    this.toggleStopBtn();
-    this.controller.handleStop();
+  stopTimer() {
+    if (this.timerState === true) {
+      this.timerState = false;
+      this.toggleStopBtn();
+      this.controller.handleStop();
+    }
   }
   chooseImportance = ({target}) => {
     const imp = ['default', 'important', 'medium'];
@@ -295,7 +304,7 @@ export class RenderTomato {
     const {editOverlay, cancelBtn, modalEditForm} = this.modalEdit;
 
     startBtn.addEventListener('click', () => this.startTimer());
-    stopBtn.addEventListener('click', this.stopTimer)
+    stopBtn.addEventListener('click', () => this.stopTimer())
 
     formInput.addEventListener('input', this.formValidity);
     formInput.addEventListener('keydown', this.readyToSubmit)
@@ -450,5 +459,12 @@ export class RenderTomato {
   }
   saveActiveTaskCount(count) {
     this.controller.handleSaveActiveTaskCount(count);
+  }
+  switchTimerState() {
+    if (this.timerState === true) {
+      this.timerState = false;
+    } else if (this.timerState === false) {
+      this.timerState = true;
+    }
   }
 }

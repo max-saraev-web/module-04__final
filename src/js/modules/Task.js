@@ -54,6 +54,7 @@ export class Task {
         this.notifySubscribers('counter',
             subscribers, this.count);
         this.notifySubscribers('saveCount', subscribers, this.count);
+        this.notifySubscribers('timerSwitch', subscribers);
         } else if(timeRemaning <= 0) {
           this.increaseCounter();
           clearInterval(this.timerId);
@@ -66,6 +67,7 @@ export class Task {
           this.notifySubscribers('counter',
             subscribers, this.count);
           this.notifySubscribers('saveCount', subscribers, this.count);
+          this.notifySubscribers('timerSwitch', subscribers);
         }
 
     };
